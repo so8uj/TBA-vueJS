@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Booking App with VueJS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main id="main_app">
+
+        <h1>{{ appTitle }}</h1>
+        <section class="main_ticket_section">
+
+
+            <div class="confirmed-dialog" v-if="confirmed">
+                <h3>Ticket confirmed!</h3>
+                <hr />
+                <br />
+                <table class="selected-seats">
+                  <tr>
+                    <th>Passenger Name</th>
+                    <td>{{name}}</td>
+                  </tr>
+      
+                  <tr>
+                    <th>Passenger Contact</th>
+                    <td>{{mobile}}</td>
+                  </tr>
+                  <tr>
+                    <th>Seats:</th>
+                    <td>
+                      <div v-for="(seat, i) in slectSeats" :key="seat.name">
+                        <div>{{seat.name}}</div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Total Cost</th>
+                    <td>Tk. {{totalCost}}</td>
+                  </tr>
+                </table>
+      
+                <br />
+      
+                <button class="confirm-button" @click="resetData">Book Again</button>
+              </div>
+
+            <div class="ticket_container_top">
+
+                <div class="ticket_status_info" v-for="value in ticketStatusBars">
+                    <span class="info_box" :style="{'background':value.color}"></span> {{ value.text }}
+                </div>
+
+            </div>
+
+            <div class="ticket_container_bottom">
+                <div class="bus_section">
+                    <div class="bus_inner_top">
+                        <div class="bus_door">Door</div>
+                        <div class="bus_driver">Driver</div>
+                    </div>
+                    <div class="seats_section">
+
+                        <div class="seat" 
+                        v-for="(seat,index) in seats" 
+                        :class="{ 'booked_color' : seat.type == 'booked', 'select_color' : seat.type == 'select', 'sold_color' : seat.type == 'sold' }" @click="handleClick(index)"
+                        >{{ seat.name }}</div>
+
+                    </div>
+                </div>
+
+                <div class="ticket_booking_info">
+                    <div class="empty_select_ticket_text" v-if="slectSeats.length === 0">
+                        No Ticket  Selected! <br>
+                        Please select ticket
+                    </div>
+
+                    <div class="cart" v-else>
+                        <strong>Selected Seats</strong>
+                        <table class="selected-seats">
+                          <thead>
+                            <tr>
+                              <th>Seat</th>
+                              <th>Price</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr v-for="(seat, i) in slectSeats" :key="seat.name">
+                              <td>{{seat.name}}</td>
+                              <td>Tk. {{seat.price}}</td>
+                            </tr>
+                            <tr v-if="appliedCoupon !== null">
+                                <th>Discount</th>
+                                <th>Tk. -{{appliedCoupon.discount}}</th>
+                            </tr>
+                            <tr>
+                              <th>Total</th>
+                              <th>Tk. {{totalCost}}</th>
+                            </tr>
+                          </tbody>
+                        </table>
+        
+                        <div class="cupon_confrim_area">
+                            <p v-if="appliedCoupon === null"> Have a cupon? <input type="text" v-model="couponCode"></p>
+                            <p v-else>Applied Coupon {{ appliedCoupon.code }}</p>
+                            <div class="">
+                                <div class="passenger_area">
+                                    <input type="text" v-model="name" placeholder="Name">
+                                    <input type="text" v-model="mobile" placeholder="Mobile Number">
+                                </div>
+                                <button @click="confirm()">Confrim</button>
+                            </div>
+
+                        </div>
+        
+                      </div>
+
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    
+
+    
+
+
+    <script src="vue.global.js"></script>
+    <script src="app.js"></script>
+
+</body>
+</html>

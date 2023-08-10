@@ -1,0 +1,183 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: arial;
+}
+
+/* Mian Ticket Section Container */
+
+.main_ticket_section {
+  background: #ddd;
+  width: 600px;
+  /* height: 400px; */
+  padding: 20px;
+  margin: auto;
+  position: relative;
+  border: 1px solid #111;
+}
+#main_app h1 {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  color: rgb(24, 100, 243);
+}
+
+.ticket_container_top {
+  display: flex;
+}
+.ticket_status_info {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+.ticket_status_info .info_box {
+  content: "";
+  width: 30px;
+  height: 15px;
+
+  border: 1px solid #3d3d3d;
+  margin-right: 10px;
+}
+
+.sold_color {
+  background: rgb(243, 19, 19);
+  color: #fff;
+}
+.select_color {
+  background: rgb(2, 212, 2) !important;
+}
+.booked_color {
+  color: #fff;
+  background: rgb(73, 73, 73) !important;
+}
+.avaiable_color {
+  background: rgb(238, 238, 238) !important;
+}
+
+.ticket_container_bottom {
+  display: flex;
+  margin-top: 20px;
+}
+.bus_section {
+  width: 200px;
+  border: 1px solid #111;
+  padding: 10px;
+}
+.bus_inner_top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bus_door,
+.bus_driver {
+  width: 40%;
+  text-align: center;
+  border: 1px solid #111;
+  padding: 5px 0;
+}
+.seats_section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.seat {
+  width: 17%;
+  border: 1px solid #111;
+  margin: 10px 0px;
+  text-align: center;
+  padding: 4px 0;
+  cursor: pointer;
+}
+.seat:hover {
+  font-weight: bold;
+}
+
+.seat:nth-child(4n-2) {
+  margin-right: 12px;
+}
+.seat:nth-child(4n-1) {
+  margin-left: 12px;
+}
+
+.ticket_booking_info {
+  width: 400px;
+  padding: 20px;
+  text-align: center;
+  vertical-align: middle;
+}
+.empty_select_ticket_text {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button.confirm {
+  margin-top: 11px;
+  margin-left: 0;
+  margin: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: 1px solid gray;
+  padding: 5px;
+}
+.selected-seats th,
+.selected-seats td {
+  padding: 2px 9px;
+  text-align: center;
+}
+.cupon_confrim_area {
+  margin-top: 10px;
+}
+.cupon_confrim_area input {
+  padding: 4px 10px;
+  border: 1px solid #111;
+  background: transparent;
+}
+.passenger_area {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.passenger_area input {
+  width: 40%;
+  margin-bottom: 10px;
+}
+button {
+  width: 100%;
+  background: rgb(8, 116, 8);
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+.confirm-button__disabled {
+  opacity: 0.4;
+}
+
+.confirmed-dialog {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background-color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  padding: 33px;
+}
+
+.confirmed-dialog h3 {
+  color: green;
+}
